@@ -30,7 +30,7 @@ go
 create table Projetos (
 idProjeto int primary key identity(1,1),
 idTema int foreign key references Temas(idTema),
-idUsuario int foreign key references Usuarios(idUsuario),
+idProfessor int foreign key references professores(idProfessor),
 tituloProjeto varchar(200) unique not null,
 descricao varchar(600) not null
 );
