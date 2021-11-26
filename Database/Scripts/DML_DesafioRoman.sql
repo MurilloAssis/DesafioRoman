@@ -23,4 +23,4 @@ insert into Professores(idEquipe, idUsuario)
 values (1,3), (2,2)
 
 insert into Projetos(idTema, idProfessor, tituloProjeto, descricao)
-values ()
+values (2, 2, 'Gestão de projetos', 'Este projetos trata-se de uma atividade em grupo para os alunos desenvolverem sua habilidades para gerir seus projetos')
