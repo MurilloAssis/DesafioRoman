@@ -1,6 +1,7 @@
 ﻿using DesafioRoman_WebApi.Domains;
 using DesafioRoman_WebApi.Interfaces;
 using DesafioRoman_WebApi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,6 +14,7 @@ namespace DesafioRoman_WebApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProjetosController : ControllerBase
     {
         private IProjetoRepository _projetoRepository { get; set; }
