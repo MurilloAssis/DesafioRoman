@@ -28,5 +28,12 @@ namespace DesafioRoman_WebApi.Controllers
             List<Projeto> lista = _projetoRepository.ListarProjetos();
             return Ok(lista);
         }
+
+        [HttpPost]
+        public IActionResult CadastrarProjeto(Projeto novoProjeto)
+        {
+            _projetoRepository.CadastrarProjeto(novoProjeto);
+            return StatusCode(201);
+        }
     }
 }
