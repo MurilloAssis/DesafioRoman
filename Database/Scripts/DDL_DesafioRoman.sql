@@ -35,3 +35,14 @@ tituloProjeto varchar(200) unique not null,
 descricao varchar(600) not null
 );
 go
+
+create table Equipes (
+idEquipe int primary key identity(1,1),
+nomeEquipe varchar(100) unique not null
+);
+
+create table professores (
+	idProfessor int primary key identity(1,1),
+	idEquipe int foreign key references Equipes(idEquipe),
+	idUsuario int foreign key references Usuarios(idUsuario)
+);
