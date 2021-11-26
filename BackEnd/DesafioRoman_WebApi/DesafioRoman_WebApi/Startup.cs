@@ -83,6 +83,10 @@ namespace DesafioRoman_WebApi
                 c.RoutePrefix = string.Empty;
             });
 
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
