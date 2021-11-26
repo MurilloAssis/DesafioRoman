@@ -46,3 +46,5 @@ create table professores (
 	idEquipe int foreign key references Equipes(idEquipe),
 	idUsuario int foreign key references Usuarios(idUsuario)
 );
+
+drop table projetos

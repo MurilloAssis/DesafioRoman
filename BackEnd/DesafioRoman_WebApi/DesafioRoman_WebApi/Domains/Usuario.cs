@@ -10,7 +10,6 @@ namespace DesafioRoman_WebApi.Domains
         public Usuario()
         {
             Professores = new HashSet<Professore>();
-            Projetos = new HashSet<Projeto>();
         }
 
         public int IdUsuario { get; set; }
@@ -21,6 +20,5 @@ namespace DesafioRoman_WebApi.Domains
 
         public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; }
         public virtual ICollection<Professore> Professores { get; set; }
-        public virtual ICollection<Projeto> Projetos { get; set; }
     }
 }

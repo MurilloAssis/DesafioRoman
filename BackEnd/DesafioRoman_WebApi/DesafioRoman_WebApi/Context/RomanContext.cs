@@ -29,7 +29,7 @@ namespace DesafioRoman_WebApi.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-CV21P6P\\SQLEXPRESS; initial catalog=RomanTardeG8; user Id=sa; pwd=#Murillo1#;");
             }
         }
@@ -82,9 +82,9 @@ namespace DesafioRoman_WebApi.Context
             modelBuilder.Entity<Projeto>(entity =>
             {
                 entity.HasKey(e => e.IdProjeto)
-                    .HasName("PK__Projetos__8FCCED7604D310D0");
+                    .HasName("PK__Projetos__8FCCED76EC42CB58");
 
-                entity.HasIndex(e => e.TituloProjeto, "UQ__Projetos__1E9FEE6025A0081F")
+                entity.HasIndex(e => e.TituloProjeto, "UQ__Projetos__1E9FEE6089E97E9A")
                     .IsUnique();
 
                 entity.Property(e => e.IdProjeto).HasColumnName("idProjeto");
@@ -95,9 +95,9 @@ namespace DesafioRoman_WebApi.Context
                     .IsUnicode(false)
                     .HasColumnName("descricao");
 
-                entity.Property(e => e.IdTema).HasColumnName("idTema");
+                entity.Property(e => e.IdProfessor).HasColumnName("idProfessor");
 
-                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+                entity.Property(e => e.IdTema).HasColumnName("idTema");
 
                 entity.Property(e => e.TituloProjeto)
                     .IsRequired()
@@ -105,15 +105,15 @@ namespace DesafioRoman_WebApi.Context
                     .IsUnicode(false)
                     .HasColumnName("tituloProjeto");
 
+                entity.HasOne(d => d.IdProfessorNavigation)
+                    .WithMany(p => p.Projetos)
+                    .HasForeignKey(d => d.IdProfessor)
+                    .HasConstraintName("FK__Projetos__idProf__4D94879B");
+
                 entity.HasOne(d => d.IdTemaNavigation)
                     .WithMany(p => p.Projetos)
                     .HasForeignKey(d => d.IdTema)
-                    .HasConstraintName("FK__Projetos__idTema__412EB0B6");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.Projetos)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__Projetos__idUsua__4222D4EF");
+                    .HasConstraintName("FK__Projetos__idTema__4CA06362");
             });
 
             modelBuilder.Entity<Tema>(entity =>

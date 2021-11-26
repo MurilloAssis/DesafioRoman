@@ -24,7 +24,7 @@ namespace DesafioRoman_WebApi.Repositories
                 {
                     IdProjeto = p.IdProjeto,
                     IdTema = p.IdTema,
-                    IdUsuario = p.IdUsuario,
+                    IdProfessor = p.IdProfessor,
                     TituloProjeto = p.TituloProjeto,
                     Descricao = p.Descricao,
                     IdTemaNavigation = new Tema()
@@ -32,10 +32,22 @@ namespace DesafioRoman_WebApi.Repositories
                         IdTema = p.IdTemaNavigation.IdTema,
                         TituloTema = p.IdTemaNavigation.TituloTema
                     },
-                    IdUsuarioNavigation = new Usuario()
+                    IdProfessorNavigation = new Professore()
                     {
-                        IdUsuario = p.IdUsuarioNavigation.IdUsuario,
-                        NomeUsuario = p.IdUsuarioNavigation.NomeUsuario
+                        IdProfessor = p.IdProfessorNavigation.IdProfessor,
+                        IdUsuario = p.IdProfessorNavigation.IdUsuarioNavigation.IdUsuario,
+                        IdUsuarioNavigation = new Usuario()
+                        {
+                            IdUsuario = p.IdProfessorNavigation.IdUsuarioNavigation.IdUsuario,
+                            NomeUsuario = p.IdProfessorNavigation.IdUsuarioNavigation.NomeUsuario
+                        },
+                        IdEquipeNavigation = new Equipe()
+                        {
+                            IdEquipe = p.IdProfessorNavigation.IdEquipeNavigation.IdEquipe,
+                            NomeEquipe = p.IdProfessorNavigation.IdEquipeNavigation.NomeEquipe,
+                        }
+
+                        
                     }
                     
                 })

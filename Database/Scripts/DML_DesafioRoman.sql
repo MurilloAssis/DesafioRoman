@@ -21,3 +21,6 @@ values ('Desenvolvimento de Sistemas'), ('Multimidia')
 
 insert into Professores(idEquipe, idUsuario)
 values (1,3), (2,2)
+
+insert into Projetos(idTema, idProfessor, tituloProjeto, descricao)
+values ()
