@@ -3,16 +3,16 @@ import React, { useState } from "react";
 import { TextInput } from "react-native";
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
-export default function login(){
+export default function login() {
 
     const [email, setEmail] = useState('');
-    const [senha, serSenha] = useState('');
+    const [senha, setSenha] = useState('');
 
 
     realizarLogin = async () => {
-        const resposta = await api.post('/Login',{
-            email : email,
-            senha : senha
+        const resposta = await api.post('/Login', {
+            email: email,
+            senha: senha
         })
 
         const token = resposta.data.token
@@ -20,6 +20,23 @@ export default function login(){
 
         console.warn(token)
     }
-    
-    
+
+    Render(){
+        return (
+            <SafeAreaView style={backgroundStyle}>
+                <TextInput
+                    placeholder="Email"
+                    placeholderTextColor="#000"
+                    onChangeText={email => setEmail({email})}
+                >
+                </TextInput>
+                <TextInput
+                    placeholder="Senha"
+                    placeholderTextColor="#000"
+                    onChangeText={senha => setSenha({senha})}
+                >
+                </TextInput>
+            </SafeAreaView>
+        );
+    }
 }
