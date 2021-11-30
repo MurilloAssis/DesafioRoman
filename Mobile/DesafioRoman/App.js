@@ -9,6 +9,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 const AuthStack = createStackNavigator();
 
 import Login from './src/screens/Login';
+import Main from './src/screens/Main';
 
 
 export default function Stack() {
@@ -24,6 +25,7 @@ export default function Stack() {
           headerShown: false,
         }}>
         <AuthStack.Screen name="Login" component={Login} />
+        <AuthStack.Screen name="Main" component={Main} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );

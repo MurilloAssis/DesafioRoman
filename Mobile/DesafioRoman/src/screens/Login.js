@@ -18,7 +18,11 @@ import {
 } from "react-native";
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
+import { useNavigation } from "@react-navigation/core";
+
 export default function login() {
+
+    const navigation = new useNavigation()
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
@@ -30,10 +34,15 @@ export default function login() {
             email: email,
             senha: senha
         })
-        console.warn(resposta)
-        const token = resposta.data.token
-        console.warn(token)
-        await AsyncStorage.setItem('userToken', token)
+        console.warn(resposta.status)
+        
+        
+        if (resposta.status === 200) {
+            console.warn("asd")
+            const token = resposta.data.token
+            await AsyncStorage.setItem('userToken', token)
+            navigation.navigate('Main')
+          }
 
     }
     return (
@@ -47,7 +56,7 @@ export default function login() {
           placeholder="Email"
           onChangeText={text => setEmail(text)}
           placeholderTextColor="#929292"
-        >
+        >""
         </TextInput>
         <TextInput
           style={styles.inputLogin}
@@ -57,7 +66,7 @@ export default function login() {
         >
         </TextInput>
         <TouchableOpacity
-        onPress={this.realizarLogin}
+        onPress={realizarLogin}
         style={styles.btnLogin}
         >
           <Text style={styles.btnLoginText}>Login</Text>
