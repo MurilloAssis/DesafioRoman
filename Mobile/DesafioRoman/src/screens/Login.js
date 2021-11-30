@@ -1,6 +1,6 @@
 import api from "../services/api";
 import React, { useState } from "react";
-import { TextInput } from "react-native";
+import { TextInput, SafeAreaView } from "react-native";
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
 export default function login() {
@@ -20,23 +20,20 @@ export default function login() {
 
         console.warn(token)
     }
-
-    Render(){
-        return (
-            <SafeAreaView style={backgroundStyle}>
-                <TextInput
-                    placeholder="Email"
-                    placeholderTextColor="#000"
-                    onChangeText={email => setEmail({email})}
-                >
-                </TextInput>
-                <TextInput
-                    placeholder="Senha"
-                    placeholderTextColor="#000"
-                    onChangeText={senha => setSenha({senha})}
-                >
-                </TextInput>
-            </SafeAreaView>
-        );
-    }
+    return (
+        <SafeAreaView >
+            <TextInput
+                placeholder="Email"
+                placeholderTextColor="#000"
+                onChangeText={email => setEmail({ email })}
+            >
+            </TextInput>
+            <TextInput
+                placeholder="Senha"
+                placeholderTextColor="#000"
+                onChangeText={senha => setSenha({ senha })}
+            >
+            </TextInput>
+        </SafeAreaView>
+    );
 }

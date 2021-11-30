@@ -1,90 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import 'react-native-gesture-handler';
 
 import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { StatusBar } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+const AuthStack = createStackNavigator();
+
+import Login from './src/screens/Login';
+
+
+export default function Stack() {
   return (
-     <SafeAreaView style={backgroundStyle}>
-                <TextInput
-                    placeholder="Email"
-                    placeholderTextColor="#000"
-                >
-                </TextInput>
-                <TextInput
-                    placeholder="Senha"
-                    placeholderTextColor="#000"
-                    >
-                </TextInput>
-      </SafeAreaView>
+    <NavigationContainer>
+      <StatusBar
+        hidden={true}
+      />
+
+      <AuthStack.Navigator
+        initialRouteName="Login"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <AuthStack.Screen name="Login" component={Login} />
+      </AuthStack.Navigator>
+    </NavigationContainer>
   );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <TextInput
-      placeholder="Email"
-      placeholderTextColor="#000"
-      >
-      </TextInput>
-      <TextInput
-      placeholder="Senha"
-      placeholderTextColor="#000"
-      >
-      </TextInput>
-    </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+}
