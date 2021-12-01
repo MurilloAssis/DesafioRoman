@@ -8,8 +8,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 const AuthStack = createStackNavigator();
 
-import Login from './src/screens/Login';
-import Main from './src/screens/Main';
+import Login from './src/screens/Loginc';
+import Main from './src/screens/Main.js';
 
 
 export default function Stack() {

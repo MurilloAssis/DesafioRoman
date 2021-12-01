@@ -15,7 +15,7 @@ const bottomTab = createBottomTabNavigator();
 export default class Main extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.main}>
                 <StatusBar hidden={false} />
 
                 <bottomTab.Navigator
@@ -27,6 +27,7 @@ export default class Main extends Component {
                                 return (
                                     <Image
                                         source={require('../assets/img/navListar.png')}
+                                        style={styles.tabBarIcon}
                                     />
                                 )
                             }
@@ -38,7 +39,7 @@ export default class Main extends Component {
                         tabBarInactiveBackgroundColor: '#DD99FF',
                         // tabBarActiveTintColor: 'red',
                         // tabBarInactiveTintColor: 'blue',
-                        tabBarStyle: { height: 50 }
+                        
                     })}
 
 
@@ -49,3 +50,16 @@ export default class Main extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    // conteúdo da main
+    main: {
+      flex: 1,
+      backgroundColor: '#F1F1F1'
+    },
+     // estilo dos ícones da tabBar
+     tabBarIcon: {
+      width: 22,
+      height: 22
+    }
+  });
