@@ -20,12 +20,15 @@ import AsyncStorage from "@react-native-community/async-storage";
 export default function Projetos() {
   const [listaProjetos, setListaProjetos] = useState([]);
 
+
   buscarProjetos = async () => {
     try {
       console.warn(AsyncStorage.getItem('userToken'))
+      const xambers = await AsyncStorage.getItem('userToken')
+
       const resposta = await api('/Projetos', {
         headers: {
-          Authorization: 'Bearer ' + AsyncStorageLib.getItem('userToken')
+          Authorization: 'Bearer ' + xambers
         }
 
       })
@@ -34,14 +37,26 @@ export default function Projetos() {
       console.warn(lista)
 
       setListaProjetos(lista)
-
       useEffect(listaProjetos, [])
+
     } catch (error) {
       console.warn(error)
     }
   }
 
 
+
+  renderItem = ({ item }) => (
+
+    <View style={styles.cadaProjeto}>
+      <View>
+        <Text style={styles.corTexto}>{item.tituloProjeto}</Text>
+        <Text style={styles.corTexto}>{item.idTemaNavigation.tituloTema}</Text>
+      </View>
+      <Text style={styles.corTexto}>{item.descricao}</Text>
+      <Text style={styles.corTexto}>{item.idProfessorNavigation.idUsuarioNavigation.nomeUsuario}</Text>
+    </View>
+  )
 
 
 
@@ -60,7 +75,7 @@ export default function Projetos() {
               contentContainerStyle={styles.cadaProjeto}
               data={listaProjetos}
               keyExtractor={item => item.idProjeto}
-
+              renderItem={renderItem}
             />
             <Text style={styles.corTexto}>Nome do Projeto</Text>
             <Text style={styles.corTexto}>Tema</Text>

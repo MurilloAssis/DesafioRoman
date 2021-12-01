@@ -38,10 +38,13 @@ export default class login extends Component {
         const token = resposta.data.token
         console.warn(token)
         await AsyncStorage.setItem('userToken', token)
-        
+
         if (resposta.status === 200) {
+
+            const xambers = await AsyncStorage.getItem('userToken')
+
             console.warn("asd")
-            console.warn(AsyncStorage.getItem('userToken'))
+            console.warn(xambers)
             this.props.navigation.navigate('Main')
         }
     };
@@ -57,7 +60,7 @@ export default class login extends Component {
                 <TextInput
                     style={styles.inputLogin}
                     placeholder="Email"
-                    onChangeText={email => this.setState({email})}
+                    onChangeText={email => this.setState({ email })}
                     placeholderTextColor="#929292"
                 >""
                 </TextInput>
@@ -65,7 +68,7 @@ export default class login extends Component {
                     style={styles.inputLogin}
                     placeholder="Senha"
                     placeholderTextColor="#929292"
-                    onChangeText={senha => this.setState({senha})}
+                    onChangeText={senha => this.setState({ senha })}
                 >
                 </TextInput>
                 <TouchableOpacity
@@ -80,41 +83,40 @@ export default class login extends Component {
 }
 
 const styles = StyleSheet.create({
-    backgroundStyle:{
-      backgroundColor: '#9530D9',
-      justifyContent: 'space-evenly',
-      alignItems: 'center',
-      width: '100%',
-      height: '100%',
+    backgroundStyle: {
+        backgroundColor: '#9530D9',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
     },
     romanLogo: {
-      width: 166,
-      height: 145
+        width: 166,
+        height: 145
     },
-    inputLogin:{
-      backgroundColor: '#FFF',
-      width:190,
-      height:40,
-      fontSize:18,
-      borderRadius: 10,
-      color: '#929292',
+    inputLogin: {
+        backgroundColor: '#FFF',
+        width: 190,
+        height: 40,
+        fontSize: 18,
+        borderRadius: 10,
+        color: '#929292',
     },
     btnLogin: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 50,
-      width: 150,
-      borderColor: '#FFFFFF',
-      color: '#FFFFFF',
-      borderWidth: 2,
-      borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 50,
+        width: 150,
+        borderColor: '#FFFFFF',
+        color: '#FFFFFF',
+        borderWidth: 2,
+        borderRadius: 10,
     },
-    btnLoginText:{
-      fontSize: 24, 
-      fontFamily: 'Open Sans', 
-      color: '#FFFFFF', 
-      letterSpacing: 4, 
-      textTransform: 'uppercase',
-    }, 
-  });
-  
+    btnLoginText: {
+        fontSize: 24,
+        fontFamily: 'Open Sans',
+        color: '#FFFFFF',
+        letterSpacing: 4,
+        textTransform: 'uppercase',
+    },
+});
