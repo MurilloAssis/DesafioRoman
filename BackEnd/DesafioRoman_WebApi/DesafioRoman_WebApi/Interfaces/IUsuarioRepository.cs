@@ -9,5 +9,6 @@ namespace DesafioRoman_WebApi.Interfaces
     interface IUsuarioRepository
     {
         Usuario Login(string email, string senha);
+        Professore buscar(int id);
     }
 }

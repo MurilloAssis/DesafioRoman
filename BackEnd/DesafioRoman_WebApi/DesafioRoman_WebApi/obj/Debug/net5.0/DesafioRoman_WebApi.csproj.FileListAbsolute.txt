@@ -137,3 +137,4 @@ C:\Users\44051078825\Desktop\DesafioRoman\BackEnd\DesafioRoman_WebApi\DesafioRom
 C:\Users\44051078825\Desktop\DesafioRoman\BackEnd\DesafioRoman_WebApi\DesafioRoman_WebApi\obj\Debug\net5.0\DesafioRoman_WebApi.pdb
 C:\Users\44051078825\Desktop\DesafioRoman\BackEnd\DesafioRoman_WebApi\DesafioRoman_WebApi\obj\Debug\net5.0\DesafioRoman_WebApi.genruntimeconfig.cache
 C:\Users\44051078825\Desktop\DesafioRoman\BackEnd\DesafioRoman_WebApi\DesafioRoman_WebApi\bin\Debug\net5.0\package-lock.json
+C:\Users\Murillo\Desktop\Senai\DesafioRoman\BackEnd\DesafioRoman_WebApi\DesafioRoman_WebApi\bin\Debug\net5.0\package-lock.json

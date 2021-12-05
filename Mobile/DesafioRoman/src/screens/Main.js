@@ -9,6 +9,7 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Projetos from './Listar';
+import Cadastrar from './Cadastrar';
 
 const bottomTab = createBottomTabNavigator();
 
@@ -31,6 +32,14 @@ export default class Main extends Component {
                                     />
                                 )
                             }
+                            if (route.name === "Cadastrar") {
+                                return (
+                                    <Image
+                                        source={require('../assets/img/navCadastrar.png')}
+                                        style={styles.tabBarIcon}
+                                    />
+                                )
+                            }
                         },
 
                         headerShown: false,
@@ -45,6 +54,7 @@ export default class Main extends Component {
 
                 >
                     <bottomTab.Screen name="Listar" component={Projetos}/>
+                    <bottomTab.Screen name="Cadastrar" component={Cadastrar}/>
                 </bottomTab.Navigator>
             </View>
         )

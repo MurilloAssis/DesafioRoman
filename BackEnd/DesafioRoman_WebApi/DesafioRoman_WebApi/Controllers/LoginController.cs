@@ -31,6 +31,7 @@ namespace DesafioRoman_WebApi.Controllers
             try
             {
                 Usuario usuarioBuscado = _usuarioRepository.Login(login.Email, login.Senha);
+                Professore professore = _usuarioRepository.buscar(usuarioBuscado.IdUsuario);
                 if (usuarioBuscado != null)
                 {
                     var Claims = new[]
@@ -38,7 +39,8 @@ namespace DesafioRoman_WebApi.Controllers
                         new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
                         new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
-                        new Claim("role", usuarioBuscado.IdTipoUsuario.ToString())
+                        new Claim("role", usuarioBuscado.IdTipoUsuario.ToString()),
+                        new Claim("idProfessor", professore.IdProfessor.ToString())
                     };
                     var Key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("senaidesafioromanwebapi"));
 

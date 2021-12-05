@@ -15,10 +15,16 @@ import {
   ImageBackground,
 } from 'react-native';
 import AsyncStorage from "@react-native-community/async-storage";
+import { Component } from "react";
 
 
-export default function Projetos() {
-  const [listaProjetos, setListaProjetos] = useState([]);
+export default class Projetos extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      listaProjetos: []
+    }
+  }
 
 
   buscarProjetos = async () => {
@@ -36,14 +42,18 @@ export default function Projetos() {
 
       console.warn(lista)
 
-      setListaProjetos(lista)
-      
+      this.setState({listaProjetos: lista})
+
     } catch (error) {
       console.warn(error)
     }
-    useEffect(listaProjetos, [])
+
+
   }
 
+  componentDidMount(){
+    this.buscarProjetos();
+  }
 
 
   renderItem = ({ item }) => (
@@ -59,27 +69,30 @@ export default function Projetos() {
   )
 
 
+  render() {
 
-  return (
+    return (
 
-    <SafeAreaView>
-      <View style={styles.backgroundStyle}>
-        <Text
-          style={styles.tituloProjetos}
-        >PROJETOS
-        </Text>
-        {/* PARA CADA PROJETO LISTADO */}
-        <View style={styles.cadaProjeto}>
+      <SafeAreaView>
+        <View style={styles.backgroundStyle}>
+          <Text
+            style={styles.tituloProjetos}
+          >PROJETOS
+          </Text>
+          {/* PARA CADA PROJETO LISTADO */}
+          <View style={styles.cadaProjeto}>
             <FlatList
               contentContainerStyle={styles.cadaProjeto}
-              data={listaProjetos}
+              data={this.state.listaProjetos}
               keyExtractor={item => item.idProjeto}
-              renderItem={renderItem}
+              renderItem={this.renderItem}
             />
+          </View>
+
         </View>
-      </View>
-    </SafeAreaView>
-  )
+      </SafeAreaView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
