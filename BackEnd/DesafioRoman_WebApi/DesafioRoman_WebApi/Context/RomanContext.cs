@@ -30,8 +30,8 @@ namespace DesafioRoman_WebApi.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-               /*Computador Pessoal: Murillo*/ optionsBuilder.UseSqlServer("Data Source=DESKTOP-CV21P6P\\SQLEXPRESS; initial catalog=RomanTardeG8; user Id=sa; pwd=#Murillo1#;");
-               /*Notebook SENAI: Murillo*/    // optionsBuilder.UseSqlServer("Data Source=NOTE0113G4\\SQLEXPRESS; initial catalog=RomanTardeG8; user Id=sa; pwd=Senai@132;");
+               /*Computador Pessoal: Murillo*/ //optionsBuilder.UseSqlServer("Data Source=DESKTOP-CV21P6P\\SQLEXPRESS; initial catalog=RomanTardeG8; user Id=sa; pwd=#Murillo1#;");
+               /*Notebook SENAI: Murillo*/    optionsBuilder.UseSqlServer("Data Source=NOTE0113G4\\SQLEXPRESS; initial catalog=RomanTardeG8; user Id=sa; pwd=Senai@132;");
 
             }
         }
